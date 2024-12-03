@@ -7,13 +7,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../../services/auth/auth.service';
 import { User } from '../../../utils/interfaces/auth.interface';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MatDialogModule, NgIf, MatFormFieldModule, ReactiveFormsModule],
+  imports: [MatDialogModule, NgIf, RouterLink, MatFormFieldModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })

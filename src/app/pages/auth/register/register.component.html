@@ -1,4 +1,7 @@
 <div class="register-container">
+    <div [routerLink]="['']" class="logo">
+        <img src="../../../assets/logoipsum-321.svg" alt="Logo">
+      </div>
     <h2>Register</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <!-- User Details -->
