@@ -1,0 +1,92 @@
+<div class="checkout-container">
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      @for(item of cartItems; track item.id) {
+        <div class="cart-item">
+          <img [src]="item.image" alt="{{item.title}}">
+          <div class="item-details">
+            <h3>{{item.title}}</h3>
+            <span>{{(item.price | currency) + "x" + item.quantity}}</span>
+          </div>
+        </div>
+      }
+      <div class="total-price">
+        <strong>Total:</strong>
+        <strong>{{totalPrice | currency}}</strong>
+      </div>
+    </div>
+  
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+      <h2>Payment Details</h2>
+      
+      <div class="payment-methods">
+        @for(method of paymentMethods; track method) {
+          <button 
+            type="button"
+            (click)="selectPaymentMethod(method)"
+            [class.active]="selectedPaymentMethod === method"
+          >
+            {{method}}
+          </button>
+        }
+      </div>
+  
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input 
+          type="text" 
+          formControlName="fullName" 
+          placeholder="John Doe"
+        >
+        @if(paymentForm.get('fullName')?.invalid && paymentForm.get('fullName')?.touched) {
+          <span class="error">Please enter a valid name</span>
+        }
+      </div>
+  
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input 
+          type="text" 
+          formControlName="cardNumber" 
+          placeholder="1234 5678 9012 3456"
+        >
+        @if(paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched) {
+          <span class="error">Invalid card number</span>
+        }
+      </div>
+  
+      <div class="card-details">
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date</label>
+          <input 
+            type="text" 
+            formControlName="expiryDate" 
+            placeholder="MM/YY"
+          >
+          @if(paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched) {
+            <span class="error">Invalid expiry date</span>
+          }
+        </div>
+  
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input 
+            type="text" 
+            formControlName="cvv" 
+            placeholder="123"
+          >
+          @if(paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched) {
+            <span class="error">Invalid CVV</span>
+          }
+        </div>
+      </div>
+  
+      <button 
+        type="submit" 
+        class="pay-now-btn"
+        [disabled]="paymentForm.invalid"
+      >
+        Pay Now
+      </button>
+    </form>
+  </div>

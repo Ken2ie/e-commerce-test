@@ -1,0 +1,51 @@
+<div class="product-page">
+    <div class="container">
+       @if(isLoading){
+        <p-skeleton width="30rem" height="35rem" borderRadius="10px" />
+        <div class="details">
+            <p-skeleton class="category" width="10rem" height="1rem" borderRadius="50px"/>
+            <div class="name-and-reviews" style="gap: 10px;">
+                <p-skeleton width="30rem" height="2rem" borderRadius="50px"/>
+                <p-skeleton width="10rem" height="2rem" borderRadius="50px"/>
+            </div>
+            <div class="describtion">
+                <p-skeleton width="40%" height="2rem" borderRadius="50px"/>
+                <p-skeleton width="100%" height="1rem" borderRadius="50px"/>
+                <p-skeleton width="100%" height="1rem" borderRadius="50px"/>
+                <p-skeleton width="100%" height="1rem" borderRadius="50px"/>
+                <p-skeleton width="80%" height="1rem" borderRadius="50px"/>
+            </div>
+        </div>
+       } @else if(!isLoading && product != null) {
+        <img [src]="product.image" [alt]="product.title">
+        <div class="details">
+            <span class="category">{{product.category}}</span>
+            <div class="name-and-reviews">
+                <h2>{{product.title}}</h2>
+                <div class="rates">
+                    <p-rating [readonly]="true" [(ngModel)]="product.rating.rate" [cancel]="false"/>
+                    <span>{{product.rating.count}} Reviews</span>
+                  </div>
+            </div>
+                  <div class="describtion">
+                     <h3>Product Describtion</h3>
+                     <p>{{product.description}}</p>
+                  </div>
+                  <div class="quantity">
+                      
+                  </div>
+                  
+                  <div class="price">
+                    <h3>Price</h3>
+                    <span>{{product.price | currency}}</span>
+                  </div>
+                  <div class="action-buttons">
+                      <button>Buy Now</button>
+                          <button (click)="addToCart(product)">Add To Cart</button>
+                   
+                  </div>
+            <!-- </div> -->
+        </div>
+       }
+    </div>
+</div>

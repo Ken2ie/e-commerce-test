@@ -1,0 +1,76 @@
+<div class="register-container">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- User Details -->
+      <div class="form-field">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" required />
+        <span class="error" *ngIf="registerForm.get('username')?.hasError('required')">
+          Username is required
+        </span>
+      </div>
+  
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" required />
+        <span class="error" *ngIf="registerForm.get('email')?.hasError('email')">
+          Please enter a valid email
+        </span>
+      </div>
+  
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" required />
+        <span class="error" *ngIf="registerForm.get('password')?.hasError('minlength')">
+          Password must be at least 6 characters
+        </span>
+      </div>
+  
+      <!-- Name -->
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" required />
+        <span class="error" *ngIf="registerForm.get('firstName')?.hasError('required')">
+          First Name is required
+        </span>
+      </div>
+  
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" required />
+      </div>
+  
+      <!-- Address -->
+      <div class="form-field">
+        <label for="street">Street</label>
+        <input type="text" id="street" formControlName="street" required />
+      </div>
+  
+      <div class="form-field">
+        <label for="city">City</label>
+        <input type="text" id="city" formControlName="city" required />
+      </div>
+  
+      <div class="form-field">
+        <label for="state">State</label>
+        <input type="text" id="state" formControlName="state" required />
+      </div>
+  
+      <div class="form-field">
+        <label for="zip">ZIP</label>
+        <input type="text" id="zip" formControlName="zip" required />
+      </div>
+  
+      <!-- Phone -->
+      <div class="form-field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" formControlName="phone" required />
+      </div>
+  
+      <button type="submit" [disabled]="registerForm.invalid || loading">
+        <span *ngIf="!loading">Register</span>
+        <div *ngIf="loading" class="loader"></div>
+      </button>
+    </form>
+  </div>
+  

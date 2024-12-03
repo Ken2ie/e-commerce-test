@@ -1,0 +1,136 @@
+/* Overlay for the dialog */
+.login-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Dialog container */
+  .login-dialog {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Heading */
+  .login-dialog h2 {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Form field container */
+  .form-field {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  /* Labels */
+  .form-field label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  /* Input fields */
+  .form-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .form-field input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  /* Button container */
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Buttons */
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button[disabled] {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button:not([disabled]) {
+    background: #007bff;
+    color: white;
+  }
+  
+  button:not([disabled]):hover {
+    background: #0056b3;
+  }
+  
+  .cancel-btn {
+    background: #ff4c4c;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background: #d12e2e;
+  }
+  
+  /* Animation for dialog appearance */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 480px) {
+    .login-dialog {
+      padding: 15px;
+      width: 90%;
+    }
+  
+    .actions button {
+      font-size: 12px;
+      padding: 8px 15px;
+    }
+  }
+  

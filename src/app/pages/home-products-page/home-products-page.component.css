@@ -1,0 +1,241 @@
+.products-page{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 100%;
+    max-inline-size: 80rem;
+    margin-block-start: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Categories */
+
+.categories{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.categories span{
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 30px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: grey;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+
+/* Head */
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Products */
+
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, 4fr);
+    gap: 30px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    border: 1px solid #c4c4c4;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.card img{
+    height: 200px;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.product-naming-details{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-naming-details span{
+    font-size: 11px;
+    margin-bottom: -10px;
+    color: grey;
+    text-transform: capitalize;
+}
+
+.product-naming-details p{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.product-price{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rates{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rates span{
+    font-size: 15px;
+    color: grey;
+}
+
+.add-to-cart{
+    background-color: #1E2F25;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-to-cart span{
+    color: #fff;
+    font-size: 18px;
+}
+
+.price-digit{
+    font-size: 20px;
+}
+
+.price{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+::ng-deep .p-rating .p-rating-item.p-rating-item-active .p-rating-icon{
+    font-size: 10px;
+    color: orange !important;
+}
+
+
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .category-item {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+  
+  .category-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .category-item.active {
+    background-color: black;
+    color: white;
+  }
+
+  .add-to-cart.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .remove-from-cart {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: red;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Mobile-first approach */
+  
+  /* Responsivity */
+  
+  @media screen and (max-width: 1200px) {
+      
+      .container{
+          padding: 0 20px;
+    }
+    .products{
+        grid-template-columns: repeat(3,3fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .products{
+        grid-template-columns: repeat(3,3fr);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .products{
+        grid-template-columns: repeat(2,2fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .products{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+  .category-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category-item {
+    text-align: center;
+    margin: 5px 0;
+  }
+}
+
+/* Tablet and larger screens */
+@media screen and (min-width: 601px) {
+  .category-filter {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

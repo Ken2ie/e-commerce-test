@@ -1,0 +1,44 @@
+<nav>
+    <div class="container">
+        <div [routerLink]="['']" class="logo">
+            <img src="../../../assets/logoipsum-321.svg" alt="">
+        </div>
+        <div class="search">
+            <div class="search-container">
+                <span class="material-symbols-outlined">search</span>
+                <input (input)="updateObserver(searckKeyword)" [(ngModel)]="searckKeyword" name="searckKeyword" type="search" placeholder="Search">
+                <div class="interactivity">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <div class="add-to-cart" [routerLink]="['/cart']">
+                <span class="material-symbols-outlined">local_mall</span>
+                <span class="badge">{{getAllCartItems().length}}</span>
+            </div>
+            @if (userPresent()) {
+               <div class="auth-button">
+                <button (click)="toggleMenuForNotSignedIn()" class="user-circle">{{user?.name?.firstname.charAt(0) + user?.name.lastname.charAt(0)}}</button>
+                @if(loginMenu){
+                    <div class="authMenu">
+                        <span>{{user.name.firstname + " " + user.name.lastname}}</span>
+                        <a (click)="logout()" [routerLink]="['']">Logout</a>
+                    </div>
+                }
+               </div>
+            } @else {
+               <div class="auth-button">
+                <button (click)="toggleMenuForNotSignedIn()" role="menu" class="material-symbols-outlined">account_circle</button>
+                @if(loginMenu){
+                    <div class="authMenu">
+                        <a [routerLink]="['/login']">Login</a>
+                        <a [routerLink]="['/register']">Register</a>
+                    </div>
+                }
+               </div>
+            }
+        </div>
+    </div>
+</nav>
+<router-outlet/>

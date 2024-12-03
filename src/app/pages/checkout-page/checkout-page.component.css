@@ -1,0 +1,106 @@
+.checkout-container {
+    display: flex;
+    max-inline-size: 80rem;
+    margin: 0 auto;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+  }
+  
+  .order-summary, .payment-form {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  
+  .cart-item img {
+    max-width: 100px;
+    margin-right: 1rem;
+  }
+  
+  .total-price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  .payment-methods {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .payment-methods button {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .payment-methods button.active {
+    background-color: black;
+    color: white;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .card-details {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .card-details .form-group {
+    flex: 1;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+  
+  .pay-now-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pay-now-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-container {
+      flex-direction: column;
+    }
+  }

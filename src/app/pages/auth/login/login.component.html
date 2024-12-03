@@ -1,0 +1,51 @@
+<div class="login-page">
+    <div class="login-container">
+        <div [routerLink]="['']" class="logo">
+          <img src="../../../assets/logoipsum-321.svg" alt="Logo">
+        </div>
+      
+        <h2>Login</h2>
+      
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Email Field -->
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              placeholder="Enter your username"
+              required
+            />
+
+          </div>
+      
+          <!-- Password Field -->
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              placeholder="Enter your password"
+              required
+            />
+            <span class="error" *ngIf="loginForm.get('password')?.invalid">
+              Password is required.
+            </span>
+            <span class="error">{{ errorAlert }}</span>
+          </div>
+      
+          <button *ngIf="isLoading" disabled>Authenticating...</button>
+          <button
+            *ngIf="!isLoading"
+            mat-raised-button
+            color="primary"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+      
+</div>

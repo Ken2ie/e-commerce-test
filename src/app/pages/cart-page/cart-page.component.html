@@ -1,0 +1,58 @@
+<div class="cart-container">
+    @if(cartItems.length === 0) {
+      <div class="empty-cart">
+        <img src="assets/empty-cart.svg" alt="Empty Cart">
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any items to your cart yet.</p>
+        <button [routerLink]="['/home']" class="shop-now-btn">Shop Now</button>
+      </div>
+    } @else {
+      <div class="cart-content">
+        <div class="cart-items">
+          @for(product of cartItems; track product.id) {
+            <div class="cart-item">
+              <img [src]="product.image" alt="{{product.title}}">
+              <div class="item-details">
+                <h3>{{product.title}}</h3>
+                <p>{{product.category}}</p>
+                <div class="price-quantity">
+                  <span class="price">{{product.price | currency}}</span>
+                  <div class="quantity-control">
+                    <button (click)="decrementQuantity(product)">-</button>
+                    <span>{{product.quantity}}</span>
+                    <button (click)="incrementQuantity(product)">+</button>
+                  </div>
+                </div>
+                <button 
+                  (click)="removeFromCart(product)" 
+                  class="remove-btn"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+        
+        <div class="cart-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-details">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span>{{totalPrice | currency}}</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-row total">
+              <strong>Total</strong>
+              <strong>{{totalPrice | currency}}</strong>
+            </div>
+          </div>
+          <button [routerLink]="['/checkout']" class="checkout-btn">Proceed to Checkout</button>
+          <button (click)="clearCart()" class="clear-cart-btn">Clear Cart</button>
+        </div>
+      </div>
+    }
+  </div>
