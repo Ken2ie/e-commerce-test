@@ -50,6 +50,15 @@ The application is live and accessible here: [ECommerceTest on Vercel](https://e
    git clone https://github.com/Ken2ie/e-commerce-test.git
    cd e-commerce-test
 
+2. Install Dependencies:
+   ```bash
+   npm install
+
+3. Serve the application:
+   ```bash
+   ng serve
+   npm run start
+
 ## API Reference 
 
 The application uses the [Fake Store API](https://fakestoreapi.com/) for the following functionality:
