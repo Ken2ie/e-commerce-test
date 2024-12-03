@@ -9,6 +9,7 @@ import { catchError, debounceTime, distinctUntilChanged, EMPTY, filter, finalize
 import { ChangeObserversService } from '../../services/changeObservers/change-observers.service';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart/cart.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home-products-page',
@@ -26,6 +27,7 @@ export class HomeProductsPageComponent implements OnInit{
   productsService = inject(ProductsService)
   changeObserverService = inject(ChangeObserversService)
   cartService = inject(CartService)
+  authService = inject(AuthService)
   
   // Variables
   allProducts! : Product[];
@@ -133,6 +135,11 @@ cartAddedProducts: number[] = [];
 
 addToCart(product: Product) {
   this.addingToCart = true;
+
+  const token = sessionStorage.getItem('jwt_tkn')
+  if(!token) {
+    return this.authService.loginDialog()
+  }
   
   // Prevent duplicate items
   if (!this.isProductInCart(product)) {

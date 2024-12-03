@@ -6,6 +6,7 @@ import { RatingModule } from 'primeng/rating';
 import { SkeletonModule } from 'primeng/skeleton';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class ProductPageComponent implements OnInit{
   // Injections
   route = inject(ActivatedRoute)
   productService = inject(ProductsService)
+  authService = inject(AuthService)
 
   // Variables
   product! : Product;
@@ -51,10 +53,16 @@ export class ProductPageComponent implements OnInit{
     this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
     this.cartAddedProducts = this.cartItems.map((item: Product) => item.id);
     this.calculateTotal();
-    
+    this.getAllItemsInCart()
   }
 
   addToCart(product: Product) {
+
+    const token = sessionStorage.getItem('jwt_tkn')
+    if(!token) {
+      return this.authService.loginDialog()
+    }
+
     this.addingToCart = true;
     
     // Prevent duplicate items
@@ -72,16 +80,18 @@ export class ProductPageComponent implements OnInit{
       this.getAllItemsInCart();
     }, 500);
   }
-  
 
-  removeFromCart(product: Product) {
-    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const updatedCart = currentCart.filter((item: Product) => item.id !== product.id);
-    
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    this.cartAddedProducts = this.cartAddedProducts.filter((id : number) => id !== product.id);
-    
-  }
+
+
+removeFromCart(product: Product) {
+  const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const updatedCart = currentCart.filter((item: Product) => item.id !== product.id);
+  
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  this.cartAddedProducts = this.cartAddedProducts.filter((id:number) => id !== product.id);
+  
+  this.getAllItemsInCart();
+}
 
   getAllItemsInCart() {
     const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');

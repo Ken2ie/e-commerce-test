@@ -40,9 +40,21 @@
                     <span>{{product.price | currency}}</span>
                   </div>
                   <div class="action-buttons">
-                      <button>Buy Now</button>
+                      <!-- <button>Buy Now</button> -->
+                      @if(!ItemInCart(product)){
                           <button (click)="addToCart(product)">Add To Cart</button>
-                   
+                        } @else if(ItemInCart(product)){
+                            <div 
+                            (click)="removeFromCart(product)"
+                            class="remove-from-cart"
+                            role="button"
+                            tabindex="0"
+                            attr.aria-label="Remove {{product.title}} from cart"
+                          >
+                          Remove this Item from Cart
+                            <span class="material-symbols-outlined">delete</span>
+                          </div>
+                      }
                   </div>
             <!-- </div> -->
         </div>
