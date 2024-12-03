@@ -76,7 +76,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    height: 9vh;
+    /* height: 9vh; */
     display: flex;
     justify-content: center;
     z-index: 100;
